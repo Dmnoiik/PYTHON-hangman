@@ -38,6 +38,10 @@ from tkinter import *
 #             print(f"Game over. The word was: {word_to_guess}")
 #             break
 
+def choose_difficulty():
+    selected_difficulty = radio_var.get()
+    print(F"Selected difficulty is: {selected_difficulty}")
+
 # Set the window and background image of Hangman
 window = Tk()
 window.geometry("600x400")
@@ -46,11 +50,12 @@ window.geometry("600x400")
 # bg_label.place(relx=0.5, rely=0.5, anchor='center')
 
 welcome_label = Label(text="Welcome to Hangman game, please select the difficulty level and click start :)", font=("Arial", 10, "normal"))
-welcome_label.grid(row=0, column=1)
+welcome_label.pack()
 radio_var = IntVar()
-easy_radio_button = Radiobutton(window, text="Easy", variable=radio_var, value=1).grid(row=1, column=1, sticky="N")
-medium_radio_button = Radiobutton(window, text="Medium", variable=radio_var, value=2).grid(row=2, column=1, sticky="N")
-hard_radio_button = Radiobutton(window, text="Hard", variable=radio_var, value=3).grid(row=3, column=1, sticky="N")
+easy_radio_button = Radiobutton(window, text="Easy", variable=radio_var, value=1).pack()
+medium_radio_button = Radiobutton(window, text="Medium", variable=radio_var, value=2).pack()
+hard_radio_button = Radiobutton(window, text="Hard", variable=radio_var, value=3).pack()
 
+confirm_difficulty_button = Button(window, text="Start a game", command=choose_difficulty).pack()
 # Main loop
 window.mainloop()
